@@ -41,7 +41,10 @@ c. Run azureml_testing.py to test connection. Should print out available compute
 4. Training: `train.py` 
 - Trains a classification (can be configured depending on job) and saves a model artifact.
 
+5. Compare models: `compare.py`
+a. Compares the most recent model with the best model in the artifacts using evaluation criteria set in `train.py`.
 
+b. If the current model is better it will override and will promote the new best model.
 
 
 

@@ -4,8 +4,8 @@ from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import roc_auc_score
 from sklearn.metrics import roc_curve
-from .dataloader import load_dataset
-from .utils import ensure_dir
+from src.dataloader import load_dataset
+from src.utils import ensure_dir
 import joblib
 
 
@@ -38,9 +38,9 @@ def train_model(random_state: int=42):
 
 ## from notebook ML Studio
 def notebook_train_model():
+    ## Load dataset
     X,y,meta = load_dataset()
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=0)
-    
     ## set regularization hyperparameter 
     reg = 0.01  
     
