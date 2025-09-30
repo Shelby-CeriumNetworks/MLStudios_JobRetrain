@@ -7,9 +7,9 @@ def load_dataset():
     if os.path.exists(csv_path):
         data = pd.read_csv(csv_path)
         print(f"Loaded dataset from {csv_path}")
-        ## Assume last column is the target
+        ## Assume last column is the target (true for diabetes dataset)
         X = data.iloc[:, :-1].values
-        y = data.iloc[:, -1].values
+        y = data.iloc[:, -1].values        
         return X,y, {"source": "csv", "path": csv_path}
     ## if not found, load from sklearn
     iris = load_iris()
