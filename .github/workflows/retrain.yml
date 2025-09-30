@@ -12,8 +12,8 @@ jobs:
   retrain:
     runs-on: ubuntu-latest
     env:
-      # Optional non-sensitive config
-      TARGET_METRIC: "auc"
+      # can alter target metric if desired here
+      TARGET_METRIC: "accuracy"
       HIGHER_IS_BETTER: "true"
       # DATA_PATH: ${{ vars.DATA_PATH }}  # define in repo "Variables" if useful
 
