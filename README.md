@@ -15,19 +15,28 @@ The main purpose of this repo is to showcase proof that a model can be retrained
     ```
 
 2. Connect to ML Studio using Azure Credentials and environment variabes
+
 a. first need to enter environment variables
     ```bash
     setx AZURE_SUBSCRIPTION_ID "<sub_id>"
     setx AZURE_RESOURCE_GROUP "<resourge_group_name>"
     setx AZURE_WORKSPACE_NAME "<workspace_name>"
     ```
+
 b. check variables have been updated. In a new power shell terminal 
-    ``` bash
+    ```bash
     echo $env:AZURE_SUBSCRIPTION_ID
     echo $env:RESOURCE_GROUP
     echo $env:AZURE_WORKSPACE_NAME
     ```
+
 c. Run azureml_testing.py to test connection. Should print out available computes in ML Studio.
+
+3. Load in dataset. There is a few options to perform this
+
+- upload the data pathway into a environment variable "DATA_PATH"
+- upload data into a folder pathway "data/training.csv"
+- if neither works or is found, pipeline will fall back onto the iris training set from sklearn.datasets
 
 
 
