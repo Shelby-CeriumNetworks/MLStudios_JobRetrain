@@ -15,7 +15,7 @@ jobs:
       # can alter target metric if desired here
       TARGET_METRIC: "accuracy"
       HIGHER_IS_BETTER: "true"
-      # DATA_PATH: ${{ vars.DATA_PATH }}  # define in repo "Variables" if useful
+      DATA_PATH: "data/diabetes.csv"
 
     steps:
       - uses: actions/checkout@v4

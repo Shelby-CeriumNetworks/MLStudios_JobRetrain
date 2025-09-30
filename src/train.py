@@ -39,6 +39,7 @@ def train_model(random_state: int=42):
 ## from notebook ML Studio
 def notebook_train_model():
     ## Load dataset
+    print("Updated method")
     X,y,meta = load_dataset()
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=0)
     ## set regularization hyperparameter 
@@ -54,10 +55,20 @@ def notebook_train_model():
     print(f"Accuracy:", acc)
     
     ## Calculate AUC
-    y_scores = model.predict_proba(X_test)
-    auc = roc_auc_score(y_test, y_scores[:,1])
-    print(f"AUC:", auc)
+
+    # y_scores = model.predict_proba(X_test)
+    # auc = roc_auc_score(y_test, y_scores[:,1])
+    # print(f"AUC:", auc)
     
+    ## add safe guards for multiclass classification
+    auc = None
+    if len(np.unique(y_test)) == 2:
+        y_scores = model.predict_proba(X_test)
+        auc = roc_auc_score(y_test, y_scores[:,1])
+        print(f"AUC:", auc)
+    else:
+        print("Skipping AUC calculation for multiclass classification/non-binary target")
+
     ## record best model
     ensure_dir("artifacts/models")
     joblib.dump(model, "artifacts/models/logistic_regression_model.joblib")
