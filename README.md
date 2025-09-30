@@ -3,7 +3,7 @@
 This repository demonstrates **automated, repeatable retraining** with:
 - **Data loading** (from a CSV if provided, otherwise a built-in dataset)
 - **Scheduled job** (via GitHub Actions cron)
-- **Model evaluation** (accuracy, F1, log loss)
+- **Model evaluation** (accuracy, auc)
 - **Comparison with previous evaluations** and model promotion if improved
 
 The main purpose of this repo is to showcase proof that a model can be retrained regularly with minimal effort to address model sway some clients may experience.
@@ -26,7 +26,7 @@ a. first need to enter environment variables
 b. check variables have been updated. In a new power shell terminal 
     ```bash
     echo $env:AZURE_SUBSCRIPTION_ID
-    echo $env:RESOURCE_GROUP
+    echo $env:AZURE_RESOURCE_GROUP
     echo $env:AZURE_WORKSPACE_NAME
     ```
 
@@ -36,12 +36,12 @@ c. Run azureml_testing.py to test connection. Should print out available compute
 
 - upload the data pathway into a environment variable "DATA_PATH"
 - upload data into a folder pathway "data/training.csv"
-- if neither works or is found, pipeline will fall back onto the iris training set from sklearn.datasets
 
 4. Training: `train.py` 
 - Trains a classification (can be configured depending on job) and saves a model artifact.
 
 5. Compare models: `compare.py`
+
 a. Compares the most recent model with the best model in the artifacts using evaluation criteria set in `train.py`.
 
 b. If the current model is better it will override and will promote the new best model.
