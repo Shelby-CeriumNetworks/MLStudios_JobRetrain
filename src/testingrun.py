@@ -8,7 +8,7 @@ model, X_test, y_test, meta, metrics = notebook_train_model()
 # Create a run record
 run_info = {
     "run_id": str(uuid.uuid4()),
-    "metrics": metrics,  # e.g. {"accuracy": 0.92, "auc": 0.88}
+    "metrics": metrics, 
     "meta": meta
 }
 

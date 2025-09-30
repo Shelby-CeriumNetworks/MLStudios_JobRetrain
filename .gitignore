@@ -1,0 +1,5 @@
+*.pyc
+__pyache__/
+artifacts/
+!aritifacts/models/.gitkeep
+!artifacts/metrics/.gitkeep
