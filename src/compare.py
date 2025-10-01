@@ -2,6 +2,7 @@ import os, json, shutil
 from pathlib import Path
 from typing import Any, Dict
 from src.utils import append_jsonl, write_json, ensure_dir, now_ts
+import numpy as np
 
 # ---- Paths (match your training code) ----
 METRICS_DIR = "artifacts/metrics"
