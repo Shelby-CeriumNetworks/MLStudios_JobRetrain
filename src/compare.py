@@ -22,6 +22,11 @@ BEST_MODEL_PATH   = f"{MODELS_DIR}/model_best.joblib"
 TARGET_METRIC = os.getenv("TARGET_METRIC")  # e.g. "roc_auc" or "auc" or "accuracy"
 HIGHER_IS_BETTER = os.getenv("HIGHER_IS_BETTER", "true").lower() == "true"
 
+def _to_builtin(v):
+    if isinstance(v, np.generic):
+        return v.item()
+    return v
+
 def _pick_metric_key(metrics: Dict[str, Any]) -> str | None:
     """
     Choose which scalar metric to compare.
@@ -105,7 +110,7 @@ def compare_and_promote(run_info: dict):
 
     return {
         "metric_key": metric_key,
-        "improved": improved,
-        "best_score": best_score,
-        "latest_score": latest_score
+        "improved": bool(improved),
+        "best_score": _to_builtin(best_score) if best_score is not None else None,
+        "latest_score": _to_builtin(latest_score) if latest_score is not None else None,
     }
