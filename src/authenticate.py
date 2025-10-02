@@ -3,10 +3,6 @@ from azure.identity import DefaultAzureCredential
 from azure.ai.ml import command
 
 
-subscription_id = "cf9f3e65-7780-4a9d-bbdd-ed2351502118"
-resource_group = "rg-datasciencefundamentals-sames"
-workspace = "mlw-dsfundamentals-sames"
-
 #authenticate
 ml_client = MLClient(
     DefaultAzureCredential(), subscription_id, resource_group, workspace
